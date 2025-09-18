@@ -11,7 +11,7 @@ const Navbar = () => {
         {/* Logo & About */}
         <Link to="/" className="flex items-center space-x-3">
           <img
-            src="../public/photos/TrackMyClassLogo.jpg"
+            src="TrackMyClassLogo.jpg"
             alt="trackmyclass"
             className="h-20 w-20 rounded-full border-4 border-indigo-400 shadow-md"
           />

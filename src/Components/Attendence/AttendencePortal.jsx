@@ -41,7 +41,7 @@ const AttendencePortal = () => {
 
   const handleViewPDF = () => {
     // PDFs ko public/pdfs folder me rakho (CSE.pdf, IT.pdf, ECE.pdf)
-    window.open(`/public/pdfs/${classCode}.pdf`, "_blank");
+    window.open(`/pdfs/${classCode}.pdf`, "_blank");
   };
 
   return (
