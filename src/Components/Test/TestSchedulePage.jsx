@@ -31,32 +31,40 @@ const ScheduleTestPage = () => {
 
   return (
     <div className="min-h-screen college-img p-6">
-      <h2 className="text-2xl font-bold mb-4">
-        Schedule Test for {classCode} Branch
-      </h2>
-
-      <div className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/20 text-white">
+      <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20 text-white">
+        <h2 className="text-2xl font-bold mb-4">
+          Schedule Test for {classCode} Branch
+        </h2>
         {/* Test Form */}
         <form className="flex flex-col gap-4 max-w-md " onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Test Title"
-            // value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="px-3 py-2 rounded-md text-black"
+            className="px-4 py-2 rounded-lg bg-white/80 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400"
           />
+
           <input
             type="date"
-            // value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="px-3 py-2 rounded-md text-black"
+            className="px-4 py-2 rounded-lg bg-white/80 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400"
           />
+
           <input
             type="time"
-            // value={time}
             onChange={(e) => setTime(e.target.value)}
-            className="px-3 py-2 rounded-md text-black"
+            className="px-4 py-2 rounded-lg bg-white/80 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400"
           />
+
+          <select
+            onChange={(e) => setMode(e.target.value)}
+            className="px-4 py-2 rounded-lg bg-white/80 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-400"
+          >
+            <option value="">Select Mode</option>
+            <option value="Online">Online</option>
+            <option value="Offline">Offline</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
           <button
             type="submit"
             className="px-4 py-2 rounded-md bg-green-500 hover:bg-green-600 text-blue-400 font-semibold"

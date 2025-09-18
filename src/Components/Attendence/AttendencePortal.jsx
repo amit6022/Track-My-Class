@@ -103,7 +103,9 @@ const AttendencePortal = () => {
         </h2>
         <div className="w-full overflow-hidden rounded-xl border border-white/20 backdrop-blur-md">
           <div
-            className="grid grid-cols-8 bg-white/20 text-white font-semibold px-4 py-3 rounded-t-lg backdrop-blur-sm"
+            className={`grid ${
+              isActive ? "grid-cols-8" : "grid-cols-6"
+            } bg-white/20 text-white font-semibold px-4 py-3 rounded-t-lg backdrop-blur-sm`}
             // style={{ backgroundColor: "#9966FF" }}
           >
             {" "}
@@ -111,18 +113,19 @@ const AttendencePortal = () => {
             <p className="text-center">Std_Name</p>
             <p className="text-center">roll_no</p>
             <p className="text-center">Std_FatherName</p>
-            <p className="text-center">Status</p>
+            {isActive && <p className="text-center">Status</p>}
             <p className="text-center">Stu_Info</p>
             <p className="text-center">Delete</p>
-            <p className="text-center">Toggle_Stu</p>
+            {isActive && <p className="text-center">Toggle_Stu</p>}
           </div>
           {Students.map((s, index) => {
             return (
               <div
                 key={s.id || index}
                 to={`/attendence/${s.id}/studentProfile`}
-                className="grid grid-cols-8 items-center justify-center border-b mt-3"
-                // style={{ backgroundColor: "#9999FF" }}
+                className={`grid ${
+                  isActive ? "grid-cols-8" : "grid-cols-6"
+                } items-center justify-center border-b mt-3`}
               >
                 {/* Serial Number */}
                 <p className="text-center text-white font-medium">
@@ -132,15 +135,16 @@ const AttendencePortal = () => {
                 <p className="text-center text-white">{s.roll_no}</p>
                 <p className="text-center text-white">{s.father_name}</p>
 
-                {s.present == true ? (
-                  <p className=" px-3 py-1 font-semibold bg-green-500/30 text-green-100 text-center shadow-md">
-                    Present
-                  </p>
-                ) : (
-                  <p className="px-3 py-1 font-medium bg-red-500/30 text-red-100 text-center shadow-md">
-                    Absent
-                  </p>
-                )}
+                {isActive &&
+                  (s.present == true ? (
+                    <p className=" px-3 py-1 font-semibold bg-green-500/30 text-green-100 text-center shadow-md">
+                      Present
+                    </p>
+                  ) : (
+                    <p className="px-3 py-1 font-medium bg-red-500/30 text-red-100 text-center shadow-md">
+                      Absent
+                    </p>
+                  ))}
                 {/* Student Info -> navigate */}
                 <button
                   onClick={() => navigate(`/attendence/${s.id}/studentProfile`)}
@@ -154,12 +158,14 @@ const AttendencePortal = () => {
                 >
                   Delete_Stu
                 </button>
-                <button
-                  onClick={() => toggleAttendence(s.id)}
-                  className="bg-gradient-to-r mx-1 from-purple-500/40 to-pink-500/40 text-white hover:from-purple-500 hover:to-pink-500 transition shadow-md"
-                >
-                  Toggle_Stu
-                </button>
+                {isActive && (
+                  <button
+                    onClick={() => toggleAttendence(s.id)}
+                    className="bg-gradient-to-r mx-1 from-purple-500/40 to-pink-500/40 text-white hover:from-purple-500 hover:to-pink-500 transition shadow-md"
+                  >
+                    Toggle_Stu
+                  </button>
+                )}
               </div>
             );
           })}

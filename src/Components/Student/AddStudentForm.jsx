@@ -231,7 +231,7 @@ export default function AddStudentForm() {
           {/* Button to open camera */}
           <button
             onClick={handleOpen}
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+            className="px-4 py-2 text-blue-500 rounded-lg"
           >
             Add Photo
           </button>
